@@ -1,11 +1,24 @@
 export default (Model) => {
     return {
-        find: async (filter) => {
-            const data = await Model.find(filter).lean().exec();
+        // find: async (filter) => {
+        //     const limit = filter.limit;
+        //     delete filter.limit;
 
-            return data;
+        //     const data = await Model.find(filter).limit(limit).lean().exec();
+            
+        //     return data;
+        // },
+        // update: async () =>{
+
+        // }
+        async find(filter = {}){
+            const limit = filter.limit;
+            delete filter.limit;
+
+            const mongooseInstance = Model.find(filter).limit(limit);
+            return mongooseInstance.exec();
         },
-        update: async () =>{
+        async update() {
 
         }
     }
