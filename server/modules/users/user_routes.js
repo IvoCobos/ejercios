@@ -5,6 +5,7 @@ export default (app)=>{
 const route = routes(app, users_model, '/users');
 
 route.setup({
-    get: true
+    get: true,
+    post: true
 });
 }

@@ -9,7 +9,10 @@ export default (Model) => {
             return mongooseInstance.exec();
         },
         async update() {
-
+        },
+        async create(data = {}){
+            const mongooseCreate = new Model(data);
+            return mongooseCreate.save();
         }
     }
 };
