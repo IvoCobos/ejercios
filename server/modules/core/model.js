@@ -4,7 +4,8 @@ export default (Model) => {
             const limit = filter.limit;
             delete filter.limit;
 
-            const mongooseInstance = Model.find(filter).limit(limit);
+            const mongooseInstance = Model.find(filter);
+            mongooseInstance.limit(limit);
             return mongooseInstance.exec();
         },
         async update() {

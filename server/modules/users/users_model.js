@@ -5,7 +5,7 @@ const {Schema} = mongoose;
 const usersSchema = new Schema({
     username: String,
     email: String
-}, {collection: 'users'});
+}, {collection: 'users', strictQuery: false});
 
 const users = mongoose.model('users', usersSchema);
 
