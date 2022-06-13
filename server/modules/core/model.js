@@ -14,11 +14,19 @@ export default (Model) => {
             }
             return mongooseInstance.exec();
         },
-        async update() {
+        async findOneAndUpdate(data = {}) {
+            const mongooseUpdate = Model.findOneAndUpdate({_id: data._id}, data, {
+                new: true
+            });
+            return mongooseUpdate.exec();
         },
         async create(data = {}) {
             const mongooseCreate = new Model(data);
             return mongooseCreate.save();
+        },
+        async findOneAndDelete(data = {}){
+            const mongooseDelete = Model.findOneAndDelete(data);
+            return mongooseDelete.exec();
         }
     }
 };

@@ -6,6 +6,8 @@ const route = routes(app, users_model, '/users');
 
 route.setup({
     get: true,
-    post: true
+    post: true,
+    put: true,
+    delete: true
 });
 }
