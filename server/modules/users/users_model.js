@@ -1,10 +1,10 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 import model from '../core/model.js';
 const {Schema} = mongoose;
 
 const usersSchema = new Schema({
-    username: String,
-    email: String
+  username: String,
+  email: String
 }, {collection: 'users', strictQuery: false});
 
 const users = mongoose.model('users', usersSchema);
