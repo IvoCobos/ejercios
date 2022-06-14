@@ -1,10 +1,22 @@
+const parser = (query) => {
+  const params = {};
+  const filter = {};
+  const queryKey = Object.keys(query);
+
+  queryKey.forEach((key) => {
+    if (key.indexOf('__') === 0) {
+      params[key.slice(2)] = query[key];
+    } else {
+      filter[key] = query[key];
+    }
+  });
+
+  return {params, filter};
+};
+
 export default (app, model, path) => {
   const find = async (req, res) => {
-    const params = {
-      page: req.query.__page,
-      perPage: req.query.__perPage
-    };
-    const filter = {};
+    const {filter, params} = parser(req.query);
     const response = await model.find(filter, params);
 
     res.json({response: response, errors: []});

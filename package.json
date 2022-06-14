@@ -2,11 +2,12 @@
   "name": "ejercios",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/app.js",
   "type": "module",
   "scripts": {
     "test": "jest --watchAll",
-    "eslint": "eslint \"server/**\""
+    "eslint": "eslint \"server/**\"",
+    "dev": "nodemon"
   },
   "author": "Ivan",
   "license": "ISC",
@@ -20,6 +21,7 @@
   },
   "devDependencies": {
     "eslint": "^8.17.0",
-    "jest": "^28.1.1"
+    "jest": "^28.1.1",
+    "nodemon": "^2.0.16"
   }
 }

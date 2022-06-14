@@ -6,6 +6,11 @@ export default (mongooseQuery) => {
 
         mongooseQuery.skip(skip).limit(perPage);
       }
+    },
+    populate: (fields) => {
+      if (fields) {
+        mongooseQuery.populate(fields);
+      }
     }
   };
 };

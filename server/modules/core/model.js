@@ -8,6 +8,7 @@ export default (Model) => {
 
       const query = defaultQuery(mongooseInstance);
       query.paginate(params.page, params.perPage);
+      query.populate(params.populate);
       const data = await mongooseInstance.exec();
 
       return data;
