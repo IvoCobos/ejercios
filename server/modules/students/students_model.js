@@ -6,7 +6,7 @@ const studentsSchema = new Schema({
   grade: String,
   age: Number,
   user: {type: Types.ObjectId, ref: 'users'}
-}, {collection: 'students', strictQuery: false});
+}, {collection: 'students'});
 
 const students = mongoose.model('students', studentsSchema);
 

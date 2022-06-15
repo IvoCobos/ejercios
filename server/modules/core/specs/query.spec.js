@@ -1,8 +1,8 @@
 import {expect, jest} from '@jest/globals';
 import defaultQuery from '../query';
 
-describe('', () => {
-  it('paginate', () => {
+describe('When', () => {
+  it('Should paginate', () => {
     const mongooseQuery = {
       skip: jest.fn().mockReturnThis(),
       limit: jest.fn()
