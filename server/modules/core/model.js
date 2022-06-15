@@ -9,6 +9,7 @@ export default (Model) => {
       const query = defaultQuery(mongooseInstance);
       query.paginate(params.page, params.perPage);
       query.populate(params.populate);
+      query.select(params.select);
       const data = await mongooseInstance.exec();
 
       return data;
@@ -30,7 +31,7 @@ export default (Model) => {
       return result;
     },
     async findOneAndDelete (data = {}) {
-      const mongooseDelete = Model.findOneAndDelete(data);
+      const mongooseDelete = Model.findOneAndDelete({_id: data._id});
 
       const result = await mongooseDelete.exec();
 

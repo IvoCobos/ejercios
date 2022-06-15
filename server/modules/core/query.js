@@ -11,6 +11,11 @@ export default (mongooseQuery) => {
       if (fields) {
         mongooseQuery.populate(fields);
       }
+    },
+    select: (fields) => {
+      if (fields) {
+        mongooseQuery.select(fields);
+      }
     }
   };
 };

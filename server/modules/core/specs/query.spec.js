@@ -1,4 +1,4 @@
-import {expect, jest} from '@jest/globals';
+import {expect, it, jest} from '@jest/globals';
 import defaultQuery from '../query';
 
 describe('When', () => {
@@ -19,5 +19,13 @@ describe('When', () => {
     const query = defaultQuery(mongooseQuery);
     query.populate('user');
     expect(mongooseQuery.populate).toHaveBeenCalledWith('user');
+  });
+  fit('when select', () => {
+    const mongooseQuery = {
+      select: jest.fn()
+    };
+    const query = defaultQuery(mongooseQuery);
+    query.select('_id age');
+    expect(mongooseQuery.select).toHaveBeenCalledWith('_id age');
   });
 });
