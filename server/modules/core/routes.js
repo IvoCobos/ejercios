@@ -1,4 +1,4 @@
-const parser = (query) => {
+const parser = (query = {}) => {
   const params = {};
   const filter = {};
   const queryKey = Object.keys(query);

@@ -33,8 +33,8 @@ describe('Model', () => {
     it('should returned populate data', async () => {
       const data = await testingModel.find({}, {populate: 'profile'});
 
-      expect(data[1].profile.profile).toBe('profile2');
       expect(data[0].profile.profile).toBe('profile1');
+      expect(data[1].profile.profile).toBe('profile2');
     });
 
     fit('should return select data', async () => {

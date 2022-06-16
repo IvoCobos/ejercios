@@ -8,7 +8,6 @@ export default (app) => {
       const students = await students_model.find();
       const users = await users_model.find();
       
-      
       return {total: students.length + users.length};
     }
   };

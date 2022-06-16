@@ -1,25 +1,26 @@
 import database from '../../utilsForSpecs/database';
 import totals_routes from '../totals_routes.js';
+import generic_routes from '../../utilsForSpecs/generic_routes.js';
+
 
 describe('app', () => {
   beforeEach(async () => {
     await database.clearAndLoad([
-      `${__dirname}/fixtures/testing.js`
+      `${__dirname}/fixtures/students.js`,
+      `${__dirname}/fixtures/users.js`
     ]);
   });
 
   afterEach(async () => {
     await database.close();
+    jest.clearAllMocks();
   });
 
   describe('When find', () => {
-    fit('should return data', async () => {
-      const data = await totals_routes.find();
-      console.log(data);
-      
-      expect(data.length).toBe(2);
-      expect(data[0].route).toBe('Route1');
-      expect(data[1].route).toBe('Route2');
+    it('should return data', async () => {
+      const data = await generic_routes(totals_routes);
+
+      expect(data.response.total).toBe(4);
     });
   });
 });
