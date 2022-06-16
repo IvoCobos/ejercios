@@ -3,7 +3,7 @@ import defaultQuery from './query.js';
 export default (Model) => {
   return {
     async find (filter, params = {}) {
-      const mongooseInstance = Model.find(filter);
+      const mongooseInstance = Model.find(filter, null);
 
 
       const query = defaultQuery(mongooseInstance);

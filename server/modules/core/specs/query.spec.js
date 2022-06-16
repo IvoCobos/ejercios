@@ -1,4 +1,3 @@
-import {expect, it, jest} from '@jest/globals';
 import defaultQuery from '../query';
 
 describe('When', () => {

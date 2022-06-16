@@ -1,4 +1,3 @@
-import {afterEach, beforeEach, describe, expect, fit, it} from '@jest/globals';
 import database from '../../utilsForSpecs/database.js';
 import testingModel from './mocks/testingModel.js';
 import './mocks/testProfileModel.js';
@@ -34,8 +33,8 @@ describe('Model', () => {
     it('should returned populate data', async () => {
       const data = await testingModel.find({}, {populate: 'profile'});
 
-      expect(data[1].profile.profile).toBe('user');
-      expect(data[0].profile.profile).toBe('admin');
+      expect(data[1].profile.profile).toBe('profile2');
+      expect(data[0].profile.profile).toBe('profile1');
     });
 
     fit('should return select data', async () => {

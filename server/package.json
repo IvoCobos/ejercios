@@ -2,7 +2,7 @@
   "name": "ejercios",
   "version": "1.0.0",
   "description": "",
-  "main": "server/app.js",
+  "main": "app.js",
   "type": "module",
   "scripts": {
     "test": "jest --watchAll",
