@@ -1,9 +1,12 @@
+import mongoose from 'mongoose';
 import defaultQuery from './query.js';
 
-export default (Model) => {
+export default (Model = mongoose.Model) => {
   return {
     async find (filter, params = {}) {
-      const mongooseInstance = Model.find(filter, null);
+      const mongooseInstance = Model.find(filter, null, {
+        strictQuery: false
+      });
 
 
       const query = defaultQuery(mongooseInstance);
