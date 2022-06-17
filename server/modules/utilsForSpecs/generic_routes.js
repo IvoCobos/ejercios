@@ -1,6 +1,6 @@
 export default (routes) => {
   return {
-    get: () => {
+    get: (query) => {
       return new Promise((resolve) => {
         routes({
           post: jest.fn(),
@@ -10,13 +10,13 @@ export default (routes) => {
             const res = {
               json: jest.fn()
             };
-            await find({}, res);
+            await find({query}, res);
             resolve(res.json.mock.calls[0][0]);
           }
         });
       });
     },
-    post: () => {
+    post: (body) => {
       return new Promise((resolve) => {
         routes({
           get: jest.fn(),
@@ -26,26 +26,29 @@ export default (routes) => {
             const res = {
               json: jest.fn()
             };
-            await create({}, res);
+            await create({body}, res);
             resolve(res.json.mock.calls[0][0]);
           }
         });
       });
     },
-    put: () => {
+    put: (body) => {
       return new Promise((resolve) => {
         routes({
+          post: jest.fn(),
+          delete: jest.fn(),
+          get: jest.fn(),
           put: async (path, findOneAndUpdate) => {
             const res = {
               json: jest.fn()
             };
-            await findOneAndUpdate({}, res);
+            await findOneAndUpdate({body}, res);
             resolve(res.json.mock.calls[0][0]);
           }
         });
       });
     },
-    delete: () => {
+    delete: (body) => {
       return new Promise((resolve) => {
         routes({
           get: jest.fn(),
@@ -55,7 +58,7 @@ export default (routes) => {
             const res = {
               json: jest.fn()
             };
-            await findOneAndDelete({}, res);
+            await findOneAndDelete({body}, res);
             resolve(res.json.mock.calls[0][0]);
           }
         });

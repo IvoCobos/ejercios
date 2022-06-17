@@ -28,7 +28,6 @@ export default (Model = mongoose.Model) => {
     },
     async create (data = {}) {
       const mongooseCreate = new Model(data);
-
       const result = await mongooseCreate.save();
 
       return result;
