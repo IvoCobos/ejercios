@@ -31,6 +31,35 @@ export default (routes) => {
           }
         });
       });
+    },
+    put: () => {
+      return new Promise((resolve) => {
+        routes({
+          put: async (path, findOneAndUpdate) => {
+            const res = {
+              json: jest.fn()
+            };
+            await findOneAndUpdate({}, res);
+            resolve(res.json.mock.calls[0][0]);
+          }
+        });
+      });
+    },
+    delete: () => {
+      return new Promise((resolve) => {
+        routes({
+          get: jest.fn(),
+          post: jest.fn(),
+          put: jest.fn(),
+          delete: async (path, findOneAndDelete) => {
+            const res = {
+              json: jest.fn()
+            };
+            await findOneAndDelete({}, res);
+            resolve(res.json.mock.calls[0][0]);
+          }
+        });
+      });
     }
   };
 };
