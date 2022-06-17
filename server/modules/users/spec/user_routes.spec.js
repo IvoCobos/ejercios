@@ -1,12 +1,11 @@
-import database from '../../utilsForSpecs/database';
-import totals_routes from '../totals_routes.js';
+import database from '../../utilsForSpecs/database.js';
+import user_routes from '../user_routes.js';
 import generic_routes from '../../utilsForSpecs/generic_routes.js';
 
 
-describe('app', () => {
+describe('users', () => {
   beforeEach(async () => {
     await database.clearAndLoad([
-      `${__dirname}/fixtures/students.js`,
       `${__dirname}/fixtures/users.js`
     ]);
   });
@@ -18,9 +17,11 @@ describe('app', () => {
 
   describe('When find', () => {
     it('should return data', async () => {
-      const data = await generic_routes(totals_routes).get();
+      const data = await generic_routes(user_routes).get();
 
-      expect(data.response.total).toBe(4);
+      expect(data.response.length).toBe(3);
+      expect(data.response[0].username).toBe('data1');
+      expect(data.response[0].email).toBe('data1@hotmail.com');
     });
   });
 });
