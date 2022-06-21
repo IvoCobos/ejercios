@@ -4,10 +4,17 @@ import users_model from '../users/users_model.js';
 
 export default (app) => {
   const model = {
-    find: async () => {
-      const students = await students_model.find();
-      const users = await users_model.find();
-      
+    find: async (filter) => {
+      let students = [];
+      let users = [];
+      const isTotals = !filter.students && !filter.users;
+      if (isTotals || filter.students) {
+        students = await students_model.find();
+      }
+      if (isTotals || filter.users) {
+        users = await users_model.find();
+      }
+
       return {total: students.length + users.length};
     }
   };
